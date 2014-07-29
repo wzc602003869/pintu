@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	weizhi = [
+	{x:0,y:0},
+	{x:350,y:0},
+	{x:700,y:0},
+	{x:0,y:350},
+	{x:350,y:350},
+	{x:700,y:350},
+	{x:0,y:700},
+	{x:350,y:700},
+	{x:700,y:700}
+	];
+	window.onload=function(){
+		var can = document.getElementsByTagName("canvas")[0];
+		var ctx = can.getContext("2d");
+		var image = new Image();
+		image.onload=function(){
+			ctx.drawImage(image, 0, 0, 300, 300,0, 0, 300, 300);
+			ctx.drawImage(image, 300, 0, 300, 300,350, 0, 300, 300);
+			ctx.drawImage(image, 600, 0, 300, 300,700, 0, 300, 300);
+			ctx.drawImage(image, 0, 300, 300, 300,0, 350, 300, 300);
+			ctx.drawImage(image, 300, 300, 300, 300,350, 350, 300, 300);
+			ctx.drawImage(image, 600, 300, 300, 300,700, 350, 300, 300);
+			ctx.drawImage(image, 0, 600, 300, 300,0, 700, 300, 300);
+			ctx.drawImage(image, 300, 600, 300, 300,350, 700, 300, 300);
+			//ctx.drawImage(image, 600, 600, 300, 300,600, 600, 300, 300);
+			
+		}
+		image.src="tt.png";
+		document.getElementById("luan").onclick=function(){
+			weizhi = [
+			{x:0,y:0},
+			{x:350,y:0},
+			{x:700,y:0},
+			{x:0,y:350},
+			{x:350,y:350},
+			{x:700,y:350},
+			{x:0,y:700},
+			{x:350,y:700},
+			{x:700,y:700}
+			];
+			function randomsort(a, b) {
+				return Math.random()>.5 ? -1 : 1;//用Math.random()函数生成0~1之间的随机数与0.5比较，返回-1或1
+			}
+			//var arr = [1, 2, 3, 4, 5];
+			weizhi.sort(randomsort);
+			console.log(weizhi);
+			 ctx.clearRect(0, 0,1000,1000);
+			ctx.drawImage(image, 0, 0, 300, 300,weizhi[0].x, weizhi[0].y, 300, 300);
+			ctx.drawImage(image, 300, 0, 300, 300,weizhi[1].x, weizhi[1].y, 300, 300);
+			ctx.drawImage(image, 600, 0, 300, 300,weizhi[2].x, weizhi[2].y, 300, 300);
+			ctx.drawImage(image, 0, 300, 300, 300,weizhi[3].x, weizhi[3].y, 300, 300);
+			ctx.drawImage(image, 300, 300, 300, 300,weizhi[4].x, weizhi[4].y, 300, 300);
+			ctx.drawImage(image, 600, 300, 300, 300,weizhi[5].x, weizhi[5].y, 300, 300);
+			ctx.drawImage(image, 0, 600, 300, 300,weizhi[6].x, weizhi[6].y, 300, 300);
+			ctx.drawImage(image, 300, 600, 300, 300,weizhi[7].x, weizhi[7].y, 300, 300);
+			}
+			document.addEventListener("keydown", function (event) {
+				var m;
+				switch(event.keyCode)
+			    {
+			        case 37://左
+			            m = 1;
+			            break;
+			        case 38:// 上
+			            m = 4;
+			            break;
+			        case 39://右
+			            m = 2;
+			            break;
+			        case 40://下
+			            m = 3;
+			            break;
+			        default :
+			            return;
+			            break;
+			    }
+				event.keyCode
+				if(m==1){
+					if(weizhi[8].x==700){
+					}else{
+						var imageData = ctx.getImageData(weizhi[8].x+350, weizhi[8].y,300,300);
+						ctx.putImageData(imageData,weizhi[8].x, weizhi[8].y);
+						ctx.clearRect(weizhi[8].x+350, weizhi[8].y,300,300);
+						weizhi[8].x+=350;
+					}
+				}else if(m==2){
+					if(weizhi[8].x==0){
+					}else{
+						var imageData = ctx.getImageData(weizhi[8].x-350, weizhi[8].y,300,300);
+						ctx.putImageData(imageData,weizhi[8].x, weizhi[8].y);
+						ctx.clearRect(weizhi[8].x-350, weizhi[8].y,300,300);
+						weizhi[8].x-=350;
+					}
+				}else if(m==3){
+					if(weizhi[8].y==0){
+					}else{
+						var imageData = ctx.getImageData(weizhi[8].x, weizhi[8].y-350,300,300);
+						ctx.putImageData(imageData,weizhi[8].x, weizhi[8].y);
+						ctx.clearRect(weizhi[8].x, weizhi[8].y-350,300,300);
+						weizhi[8].y-=350;
+					}
+				}else if(m==4){
+					if(weizhi[8].y==700){
+					}else{
+						var imageData = ctx.getImageData(weizhi[8].x, weizhi[8].y+350,300,300);
+						ctx.putImageData(imageData,weizhi[8].x, weizhi[8].y);
+						ctx.clearRect(weizhi[8].x, weizhi[8].y+350,300,300);
+						weizhi[8].y+=350;
+					}
+				}
+			})
+	}
+	</script>
+	
+</head>
+<body>
+	<canvas height="1000" width="1000" ></canvas>
+	<button id="luan">乱</button>
+</body>
+</html>
