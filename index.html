@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script type="text/javascript">
-	weizhi = [
+	var weizhi = [
 	{x:0,y:0},
 	{x:350,y:0},
 	{x:700,y:0},
@@ -33,17 +33,6 @@
 		}
 		image.src="tt.png";
 		document.getElementById("luan").onclick=function(){
-			weizhi = [
-			{x:0,y:0},
-			{x:350,y:0},
-			{x:700,y:0},
-			{x:0,y:350},
-			{x:350,y:350},
-			{x:700,y:350},
-			{x:0,y:700},
-			{x:350,y:700},
-			{x:700,y:700}
-			];
 			function randomsort(a, b) {
 				return Math.random()>.5 ? -1 : 1;//用Math.random()函数生成0~1之间的随机数与0.5比较，返回-1或1
 			}
